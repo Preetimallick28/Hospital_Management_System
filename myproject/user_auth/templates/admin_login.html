@@ -1,0 +1,21 @@
+{% extends 'base_main.html' %}
+{% block content %}
+    <center>
+        <div>
+            <img class="admin_img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8yjgg60rx5Sk-d_ZBkaKQwh4z2QQQYXoePIqAdFXxvX3cWL_m3e3Apt7oJsohq84G31w&usqp=CAU">
+        </div>
+        <h2>Admin Login Form</h2>
+        <div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" required>
+
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+
+                <button type="submit" class="btn-login">Login</button>
+            </form>
+        </div>
+    </center>
+{% endblock content %}

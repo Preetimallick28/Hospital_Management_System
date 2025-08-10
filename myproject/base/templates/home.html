@@ -1,0 +1,36 @@
+{% extends 'base_main.html' %}
+
+{% block content %}
+<div>
+  <center>
+    <h2>Hospital Management System</h2>
+  </center>
+</div>
+<div class="container overflow-hidden">
+  <div class="row gx-5">
+    <div class="col">
+     <div class="p-3 border bg-light">
+        <div class="card" style="width: 18rem;">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <a href="{% url 'admin_login' %}" class="btn btn-primary">Admin Login</a>
+            <p>Don't have an account?<a href="{% url 'admin_registration' %}">Signup</a></p>
+        </div>
+        </div>
+     </div>
+    </div>
+    <div class="col">
+      <div class="p-3 border bg-light">
+        <div class="card" style="width: 18rem;">
+        <img src="https://png.pngtree.com/png-clipart/20241103/original/pngtree-cute-female-doctor-png-image_16670357.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <a href="{% url 'doctor_login' %}" class="btn btn-primary">Doctor Login</a>
+            <p>Don't have an account?<a href="{% url 'doctor_registration' %}">Signup</a></p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

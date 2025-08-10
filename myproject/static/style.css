@@ -1,0 +1,212 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Container centering */
+.container {
+    padding-top: 50px;
+}
+
+/* Card styling */
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: white;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Card images */
+.card img {
+    object-fit: cover;
+    height: 200px;
+    background: #f0f0f0;
+}
+
+/* Buttons */
+.card .btn {
+    width: 100%;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.card .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Equal height columns */
+.col {
+    display: flex;
+    justify-content: center;
+}
+/* Form container */
+.login-container {
+    background: #ffffff;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Form heading */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Labels */
+.login-container label {
+    font-weight: 600;
+}
+
+/* Inputs */
+.login-container .form-control {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Submit button */
+.login-container input[type="submit"] {
+    background-color: #4facfe;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-container input[type="submit"]:hover {
+    background-color: #357ae8;
+}
+
+
+/* Admin image styling */
+.admin_img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+/* Form container */
+form {
+    /* background: #ffffff; */
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+}
+
+/* Labels */
+.form-label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+    color: #333;
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Login button */
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background: #4facfe;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: #357ae8;
+}
+/* Navbar background & shadow */
+.navbar {
+    background: linear-gradient(90deg, #4facfe, #00f2fe) !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Navbar brand styling */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: white !important;
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    font-size: 1.4rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+/* Hover effect for links */
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    border: none;
+}
+
+/* Dropdown items hover */
+.dropdown-menu .dropdown-item:hover {
+    background-color: #4facfe;
+    color: white;
+}
+
+/* Search box */
+.form-control {
+    border-radius: 20px;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+}
+
+/* Search button */
+.btn-outline-success {
+    border-radius: 20px;
+    color: rgb(13, 114, 203);
+    border: 1px solid white;
+}
+
+.btn-outline-success:hover {
+    background-color: rgb(188, 212, 8);
+    color: #0a4458;
+}
