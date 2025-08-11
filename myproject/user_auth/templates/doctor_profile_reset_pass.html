@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <div class="login-container ">
+    <h2>This is reset password form</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label class="form-label">Old Password</label>
+        <input type="text" name="old_pass" class="form-control" required>
+
+        <label class="form-label">New Password</label>
+        <input type="text" name="new_pass" class="form-control" required>
+
+        <button type="submit" class="btn-login">Reset Password</button>
+    </form>
+    {% if error %}
+    <h2>{{error}}</h2>
+    {% endif %}
+</div>
+</center>
+{% endblock content %}

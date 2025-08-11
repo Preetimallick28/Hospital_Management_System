@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="form-container">
+  <h2>User Profile Update Form</h2>
+  </div>
+  <div class="form-container">
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <label class="form-label">Name:</label>
+    <input class="form-control"  type="text" name="f_name" value="{{ u.first_name }}">
+
+    <label class="form-label">Last Name:</label>
+    <input class="form-control" type="text" name="l_name" value="{{ u.last_name }}">
+
+    <label class="form-label">Email:</label>
+    <input class="form-control" type="text" name="email" value="{{ u.email }}">    
+
+    <label class="form-label">User Name:</label>
+    <input class="form-control" type="text" name="username" value="{{u.username}}">
+
+    <button type="submit" class="btn btn-fancy">Submit</button>
+  </form>
+</div>
+
+{% endblock content %}

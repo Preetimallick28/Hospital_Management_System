@@ -15,8 +15,7 @@
             Patient
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a></li>
-            <li><a class="dropdown-item" href="{% url 'admin_view_patient' %}">View Patient</a></li>
+            <li><a class="dropdown-item" href="{% url 'doctor_view_patient' %}">View Patient</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
@@ -25,20 +24,24 @@
             Appointment
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{% url 'add_appointment' %}">Add Appointment</a></li>
-            <li><a class="dropdown-item" href="{% url 'admin_view_appointment' %}">View Appointment</a></li>
+            <li><a class="dropdown-item" href="{% url 'doctor_view_appointment' %}">View Appointment</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'admin_profile' %}">Profile</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'doctor_profile' %}">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Logout</a>
         </li>
-        
                             
       </ul>      
+    </div>
+    <div>
+        <form class="d-flex" action="" method="GET">
+          <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
     </div>
     {% else %}
          <li class="nav-item">

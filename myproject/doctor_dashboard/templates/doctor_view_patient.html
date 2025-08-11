@@ -1,4 +1,4 @@
-{% extends 'main.html' %}
+{% extends 'doctor_main.html' %}
 
 {% block content %}
   <center>
@@ -23,7 +23,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for i in patient_data %}
+    {% for i in patient %}
     <tr>
       <td>{{i.id}}</td>
       <td>{{i.name}}</td>
@@ -32,8 +32,8 @@
       <td>{{i.contact_number}}</td>
       <td>{{i.address}}</td>
       <td>{{i.doctor}}</td>
-      <td><a href="{% url 'admin_update_patient' i.id %}"><button class="btn btn-primary">Update</button></a>
-      <a href="{% url 'admin_delete_patient' i.id %}"><button class="btn btn-danger">Delete</button></a></td>
+      <td><a href="{% url 'doctor_patient_update' i.id %}"><button class="btn btn-primary">Update</button></a>
+      <a href=""><button class="btn btn-danger">Delete</button></a></td>
     </tr>
     {% endfor %}
   </tbody>

@@ -20,3 +20,5 @@ class Patient(models.Model):
         null=True,
         limit_choices_to={'is_staff': False} 
     )
+    def __str__(self):
+        return self.name

@@ -1,0 +1,24 @@
+{% extends 'doctor_main.html' %}
+
+{% block content %}
+
+<center>
+    <div class="profile-container">
+    <h2>Doctor Profile</h2>
+
+    <div class="profile-info">First Name: {{request.user.first_name}}</div>
+    <div class="profile-info">Last Name: {{request.user.last_name}}</div>
+    <div class="profile-info">Email: {{request.user.email}}</div>
+    <div class="profile-info">Username: {{request.user.username}}</div>
+
+    <div class="profile-actions">
+        <a href="{% url 'doctor_update_profile' request.user %}">Update</a>
+        <a href="{% url 'doctor_profile_reset_pass' %}">Reset Password</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</div>
+
+</center>
+
+{% endblock content %}
+
