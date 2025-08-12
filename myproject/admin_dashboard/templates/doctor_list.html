@@ -14,26 +14,20 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Patient Name</th>
-      <th scope="col">Doctor</th>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Reason</th>
-      <th scope="col">Action</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Email</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
-    {% for i in search %}
+    {% for i in list %}
     <tr>
       <td>{{i.id}}</td>
-      <td>{{i.patient}}</td>
-      <td>{{i.doctor}}</td>
-      <td>{{i.date}}</td>
-      <td>{{i.time}}</td>
-      <td>{{i.reason}}</td>
-      <td><a href="{% url 'admin_update_appointment' i.id %}"><button class="btn btn-primary">Update</button></a>
-      <a href="{% url 'admin_delete_appointment' i.id %}"><button class="btn btn-danger">Delete</button></a>
-      </td>
+      <td>{{i.first_name}}</td>
+      <td>{{i.last_name}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.username}}</td>
     </tr>
     {% endfor %}
   </tbody>

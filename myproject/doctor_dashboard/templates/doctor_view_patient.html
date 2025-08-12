@@ -9,6 +9,7 @@
         </form>
     </div>
   </center>
+  <div class="container mt-5">
 <table class="table">
   <thead>
     <tr>
@@ -33,9 +34,10 @@
       <td>{{i.address}}</td>
       <td>{{i.doctor}}</td>
       <td><a href="{% url 'doctor_patient_update' i.id %}"><button class="btn btn-primary">Update</button></a>
-      <a href=""><button class="btn btn-danger">Delete</button></a></td>
+      <a href="{% url 'doctor_patient_delete' i.id %}"><button class="btn btn-danger">Delete</button></a></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>
 {% endblock content %}

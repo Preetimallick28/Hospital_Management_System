@@ -1,7 +1,19 @@
 {% extends 'doctor_main.html' %}
 
 {% block content %}
-    <center>
-        <h1>Welcome DR.{{request.user.first_name}}</h1>
-    </center>
+<center>
+<h2>Welcome DR.{{request.user}}</h2></center>
+<div class="dashboard-container">
+  <div class="card">
+    <h2>{{ patient_count }}</h2>
+    <p>Patients</p>
+    <a class="btn btn-primary" href="{% url 'doctor_view_patient' %}">View Patient</a>
+  </div>
+
+  <div class="card">
+    <h2>{{ appointment_count }}</h2>
+    <p>Appointments</p>
+    <a class="btn btn-primary" href="{% url 'doctor_view_appointment' %}">View Appointment</a>
+  </div>
+</div>
 {% endblock content %}

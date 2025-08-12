@@ -46,12 +46,50 @@ def admin_login_(request):
             login(request,u)
             return redirect('admin_home')
         else:
-            return render(request,'login.html',{'wrong_':True})
+            return render(request,'admin_login.html',{'wrong_':True})
         
     return render(request,'admin_login.html') 
 
 def admin_profile(request):
-    return request(render,'admin_profile.html')
+    return render(request,'admin_profile.html')
+
+def admin_update_profile(request,pk):
+    profile_data = User.objects.get(username=pk)
+    u=User.objects.get(username=pk)
+    if request.method=='POST':
+        first_name = request.POST['f_name']
+        last_name = request.POST['l_name']
+        email = request.POST['email']
+        username = request.POST['username']
+
+        u.first_name = first_name
+        u.last_name = last_name
+        u.email = email
+        u.username = username
+        u.save()
+        return redirect('admin_profile')
+    return render(request,'admin_update_profile.html',{'u':profile_data})
+
+def admin_reset_pass(request):
+    context={}
+    user_record = User.objects.get(username=request.user)
+    print(user_record.password)
+    if request.method=='POST':
+        old_pass = request.POST['old_pass']
+        new_pass = request.POST['new_pass']
+        
+        u= authenticate(username=user_record.username , password=old_pass)
+        # print(old_pass,new_pass)
+        if u is not None:
+            user_record.set_password(new_pass)
+            user_record.save()
+            logout(request)
+            return redirect('admin_login')
+        else:
+            context['error']='you have entered wrong old password'
+            return render(request,'admin_reset_pass.html',context)
+        
+    return render(request,'admin_reset_pass.html')
 
 def doctor_registration_(request):
     context={}

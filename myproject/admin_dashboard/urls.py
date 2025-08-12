@@ -11,6 +11,7 @@ urlpatterns = [
     path('admin_view_appointment',views.admin_view_appointment,name='admin_view_appointment'),
     path('admin_update_appointment/<int:pk>',views.admin_update_appointment,name='admin_update_appointment'),
     path('admin_delete_appointment/<int:pk>',views.admin_delete_appointment,name='admin_delete_appointment'),
+    path('doctor_list',views.doctors_list,name='doctor_list'),
 
 
 ]

@@ -6,17 +6,36 @@ from django.db.models import Q
 
 # Create your views here.
 def doctor_home(request):
+    patient_count = Patient.objects.filter(doctor=request.user).count()
+    appointment_count = Appointment.objects.filter(doctor=request.user).count()
 
-    return render(request,'doctor_home.html')
+    context = {
+        'patient_count': patient_count,
+        'appointment_count': appointment_count,
+    }
+    return render(request,'doctor_home.html',context)
 
 def doctor_view_patient(request):
-    patients = Patient.objects.filter(doctor_id=request.user.id)
-    return render(request,'doctor_view_patient.html',{'patient':patients})
+    
+    if request.method=='GET':
+        if 'q' in request.GET:
+            q_data = request.GET['q']
+            print(q_data)
+            data = Patient.objects.filter(Q(name__icontains=q_data))
+        else:
+            data=Patient.objects.filter(doctor=request.user)
+    return render(request,'doctor_view_patient.html',{'patient':data})
 
 
 def doctor_view_appointment(request):
-    appointment = Appointment.objects.filter(doctor_id=request.user.id)
-    return render(request,'view_appointment.html',{'appointment':appointment})
+    if request.method=='GET':
+        if 'q' in request.GET:
+            q_data = request.GET['q']
+            print(q_data)
+            data = Appointment.objects.filter(Q(patient__name__icontains=q_data))
+        else:
+            data=Appointment.objects.filter()
+    return render(request,'doctor_view_appointment.html',{'appointment':data})
 
 def doctor_patient_update(request,pk):
     u = Patient.objects.get(id=pk)
@@ -65,5 +84,10 @@ def doctor_appointment_update(request,pk):
     
 def doctor_delete_appointment(request,pk):
     delete_data = Appointment.objects.get(id=pk)
+    delete_data.delete()
+    return redirect('doctor_view_appointment')
+
+def doctor_patient_delete(request,pk):
+    delete_data = Patient.objects.get(id=pk)
     delete_data.delete()
     return redirect('doctor_view_appointment')

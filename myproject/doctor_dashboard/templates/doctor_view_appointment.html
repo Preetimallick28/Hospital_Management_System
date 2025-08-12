@@ -9,6 +9,7 @@
         </form>
     </div>
   </center>
+<div class="container-fluid mt-5">
 <table class="table">
   <thead>
     <tr>
@@ -22,7 +23,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for i in data %}
+    {% for i in appointment %}
     <tr>
       <td>{{i.id}}</td>
       <td>{{i.patient}}</td>
@@ -30,11 +31,12 @@
       <td>{{i.date}}</td>
       <td>{{i.time}}</td>
       <td>{{i.reason}}</td>
-      <td><a href="{% url 'admin_update_appointment' i.id %}"><button class="btn btn-primary">Update</button></a>
+      <td><a href="{% url 'doctor_appointment_update' i.id %}"><button class="btn btn-primary">Update</button></a>
       <a href="{% url 'admin_delete_appointment' i.id %}"><button class="btn btn-danger">Delete</button></a>
       </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>
 {% endblock content %}

@@ -11,6 +11,8 @@ urlpatterns = [
     path('doctor_profile_reset_pass',views.doctor_profile_reset_pass,name='doctor_profile_reset_pass'),
     path('logout_',views.logout_,name='logout'),
     path('admin_profile',views.admin_profile,name='admin_profile'),
+    path('admin_update_profile/<str:pk>',views.admin_update_profile,name='admin_update_profile'),
+    path('admin_reset_pass',views.admin_reset_pass,name='admin_reset_pass'),
     
 
 ]

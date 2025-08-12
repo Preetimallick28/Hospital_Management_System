@@ -5,7 +5,20 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 # Create your views here.
 def admin_home(request):
-    return render(request,'admin_home.html')
+    patient_count = Patient.objects.count()
+    doctor_count = User.objects.filter(is_staff=False).count()
+    appointment_count = Appointment.objects.count()
+
+    context = {
+        'patient_count': patient_count,
+        'doctor_count': doctor_count,
+        'appointment_count': appointment_count,
+    }
+    return render(request,'admin_home.html',context)
+
+def doctors_list(request):
+    list = User.objects.filter(is_staff=False)
+    return render(request,'doctor_list.html',{'list':list})
 
 def add_patient(request):
     doctor_list = User.objects.filter(is_staff=False)
@@ -63,8 +76,7 @@ def admin_view_patient(request):
             data = Patient.objects.filter(Q(name__icontains=q_data))
         else:
             data=Patient.objects.all()
-    patient = Patient.objects.all()
-    return render(request,'view_patient.html',{'patient_data':patient,'data':data})
+    return render(request,'view_patient.html',{'data':data})
 
 
 def admin_update_patient(request,pk):
@@ -95,8 +107,14 @@ def admin_delete_patient(request,pk):
     return redirect('admin_view_patient')
 
 def admin_view_appointment(request):
-    appointment = Appointment.objects.all()
-    return render(request,'view_appointment.html',{'data':appointment})
+    if request.method=='GET':
+        if 'q' in request.GET:
+            q_data = request.GET['q']
+            print(q_data)
+            data = Appointment.objects.filter(Q(patient__name__icontains=q_data))
+        else:
+            data=Appointment.objects.all()
+    return render(request,'view_appointment.html',{'search':data})
 
 def admin_update_appointment(request,pk):
     u = Appointment.objects.get(id=pk)
