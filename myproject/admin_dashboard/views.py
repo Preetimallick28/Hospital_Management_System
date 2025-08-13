@@ -2,8 +2,11 @@ from django.shortcuts import render,redirect
 from doctor_dashboard.models import Patient
 from admin_dashboard.models import Appointment
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 # Create your views here.
+
+@login_required(login_url='admin_login')
 def admin_home(request):
     patient_count = Patient.objects.count()
     doctor_count = User.objects.filter(is_staff=False).count()
@@ -16,10 +19,13 @@ def admin_home(request):
     }
     return render(request,'admin_home.html',context)
 
+@login_required
 def doctors_list(request):
     list = User.objects.filter(is_staff=False)
     return render(request,'doctor_list.html',{'list':list})
 
+
+@login_required
 def add_patient(request):
     doctor_list = User.objects.filter(is_staff=False)
     
@@ -44,6 +50,8 @@ def add_patient(request):
         
     return render(request,'add_patient.html',{'doctors':doctor_list})
 
+
+@login_required
 def add_appointment(request):
     if request.method=='POST':
         patient_id = request.POST['patient']  # Comes as a string
@@ -68,6 +76,7 @@ def add_appointment(request):
     patient = Patient.objects.all()
     return render(request,'add_appointment.html',{'doctors':doctor_list,'patient':patient})
 
+@login_required
 def admin_view_patient(request):
     if request.method=='GET':
         if 'q' in request.GET:
@@ -78,7 +87,7 @@ def admin_view_patient(request):
             data=Patient.objects.all()
     return render(request,'view_patient.html',{'data':data})
 
-
+@login_required
 def admin_update_patient(request,pk):
     u = Patient.objects.get(id=pk)
     doctors = User.objects.all()
@@ -101,11 +110,13 @@ def admin_update_patient(request,pk):
         return redirect('admin_view_patient')
     return render(request,'update_patient.html',{'u':u,'doctors':doctors})
 
+@login_required
 def admin_delete_patient(request,pk):
     delete_data = Patient.objects.get(id=pk)
     delete_data.delete()
     return redirect('admin_view_patient')
 
+@login_required
 def admin_view_appointment(request):
     if request.method=='GET':
         if 'q' in request.GET:
@@ -116,6 +127,8 @@ def admin_view_appointment(request):
             data=Appointment.objects.all()
     return render(request,'view_appointment.html',{'search':data})
 
+
+@login_required
 def admin_update_appointment(request,pk):
     u = Appointment.objects.get(id=pk)
 
@@ -140,7 +153,7 @@ def admin_update_appointment(request,pk):
     return render(request, 'update_appointment.html', {'u': u,'patients': patients,'doctors': doctors})
 
 
-
+@login_required
 def admin_delete_appointment(request,pk):
     delete_data = Appointment.objects.get(id=pk)
     delete_data.delete()

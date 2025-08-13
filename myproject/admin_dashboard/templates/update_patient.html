@@ -2,16 +2,16 @@
 
 {% block content %}
 <center>
-    <h2>PATIENT FORM</h2>
+    <h2 class="update-patient-header">UPDATE PATIENT FORM</h2>
 <form action="" method="POST">
     {% csrf_token %}
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Patient Name:</label>
-    <input type="text" name="name"  class="form-control"  value="{{ u.name }}">
+    <label for="exampleInputEmail1" class="form-label patient-label">Patient Name:</label>
+    <input type="text" name="name"  class="form-control patient-input"  value="{{ u.name }}">
   </div>
   <div class="mb-3">
-    <label>Doctor</label>
-    <select name="doctor">
+    <label class="doctor-label">Doctor</label>
+    <select class="doctor-choice" name="doctor">
     {% for d in doctors %}
         <option value="{{ d.id }}" {% if d.id == u.doctor.id %}selected{% endif %}>
         {{ d.first_name }} {{ d.last_name }}
@@ -20,24 +20,24 @@
     </select>
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Age:</label>
-    <input type="text" name="age"  class="form-control"  value="{{ u.age }}">
+    <label for="exampleInputEmail1" class="form-label age-label">Age:</label>
+    <input type="text" name="age"  class="form-control age-input"  value="{{ u.age }}">
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Gender:</label>
-    <input type="text" name="gender"  class="form-control" value="{{ u.gender }}">
+    <label for="exampleInputEmail1" class="form-label gender-label">Gender:</label>
+    <input type="text" name="gender"  class="form-control gender-input" value="{{ u.gender }}">
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Phone:</label>
-    <input type="text" name="phone"  class="form-control" value="{{ u.contact_number }}">
+    <label for="exampleInputEmail1" class="form-label phone-label">Phone:</label>
+    <input type="text" name="phone"  class="form-control phone-input" value="{{ u.contact_number }}">
   </div>
   
   <div class="mb-3">
-    <label class="form-label">Address:</label>
-    <input type="textarea" class="form-control" name="address" value="{{u.address}}">
+    <label class="form-label address-label">Address:</label>
+    <input type="textarea" class="form-control address-input" name="address" value="{{u.address}}">
   </div>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="update-patient-btn btn btn-primary">Submit</button>
 </form>
 </center>
 {% endblock content %}

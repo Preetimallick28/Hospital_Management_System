@@ -2,15 +2,15 @@
 
 {% block content %}
   <center>
-    <div>
+    <div class="search-patient">
         <form action="" method="GET">
           <input type="text" name="q" placeholder="Search...."  required>
           <input type="submit" value="Search">
         </form>
     </div>
   </center>
-<table class="table">
-  <thead>
+<table class="patient-table table">
+  <thead class="patient-heading">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Patient Name</th>
@@ -22,7 +22,7 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="patient-table-body">
     {% for i in data %}
     <tr>
       <td>{{i.id}}</td>
@@ -32,8 +32,8 @@
       <td>{{i.contact_number}}</td>
       <td>{{i.address}}</td>
       <td>{{i.doctor}}</td>
-      <td><a href="{% url 'admin_update_patient' i.id %}"><button class="btn btn-primary">Update</button></a>
-      <a href="{% url 'admin_delete_patient' i.id %}"><button class="btn btn-danger">Delete</button></a></td>
+      <td><a href="{% url 'admin_update_patient' i.id %}"><button class="admin-patient-update-btn btn btn-primary"><i class="fa-solid fa-user-pen"></i></button></a>
+      <a href="{% url 'admin_delete_patient' i.id %}"><button class="admin-patient-delete-btn btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a></td>
     </tr>
     {% endfor %}
   </tbody>

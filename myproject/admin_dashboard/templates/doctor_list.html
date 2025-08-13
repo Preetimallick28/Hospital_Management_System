@@ -2,7 +2,8 @@
 
 {% block content %}
 <center>
-    <div class="container-fluid mt-3">
+  <h2 class="doctor-heading-list">Doctors List</h2>
+    <div class="container-fluid search-form mt-3">
         <form class="d-flex" action="" method="GET">
           <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
@@ -10,8 +11,8 @@
     </div>
   </center>
   <div class="container-fluid mt-5">
-<table class="table">
-  <thead>
+<table class="table doctors-list-table">
+  <thead class="doctors-list-heading">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">FirstName</th>

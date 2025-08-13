@@ -2,39 +2,41 @@
 
 {% block content %}
 <center>
-    <h2>APPOINTMENT FORM</h2>
-<form action="" method="POST">
-    {% csrf_token %}
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Patient Name:</label>
-    <select name="patient">
-            {% for p in patient %}
-                <option value="{{ p.id }}">{{p.name}}</option>
-            {% endfor %}
-        </select>
+  <h2 class="appointment-form-heading">APPOINTMENT FORM</h2>
+  <div class="admin--add-appointment-form">
+    <form action="" method="POST">
+        {% csrf_token %}
+      <div class="mb-3">
+        <label class="patient-name-label" for="exampleInputEmail1" class="form-label">Patient Name:</label>
+        <select class="patient-choice" name="patient">
+                {% for p in patient %}
+                    <option value="{{ p.id }}">{{p.name}}</option>
+                {% endfor %}
+            </select>
+      </div>
+      <div class="mb-3">
+        <label class="doctor-name-label">Doctor</label>
+            <select class="doctor-choice" name="doctor">
+                {% for i in doctors %}
+                    <option value="{{ i.id }}">{{i.first_name}}</option>
+                {% endfor %}
+            </select>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="date-class form-label">Date:</label>
+        <input type="date" name="date"  class="date-input form-control" >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="time-class form-label">Time:</label>
+        <input type="time" name="time"  class="time-input form-control" >
+      </div>
+      <div class="mb-3">
+        <label class="reason-class form-label">Reason:</label>
+        <input type="textarea" class="reason-input form-control" name="reason">
+      </div>
+      
+      <button type="submit" class="appointment-submit btn btn-primary">Submit</button>
+    </form>
   </div>
-  <div class="mb-3">
-    <label>Doctor</label>
-        <select name="doctor">
-            {% for i in doctors %}
-                <option value="{{ i.id }}">{{i.first_name}}</option>
-            {% endfor %}
-        </select>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Date:</label>
-    <input type="date" name="date"  class="form-control" >
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Time:</label>
-    <input type="time" name="time"  class="form-control" >
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Reason:</label>
-    <input type="textarea" class="form-control" name="reason">
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 </center>
 {% endblock content %}

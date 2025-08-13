@@ -1,17 +1,18 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<center>
-    <div class="container-fluid mt-3">
+<div class="appointment-view-body"></div>
+<center>  
+    <div class="search-form container-fluid mt-3">
         <form class="d-flex" action="" method="GET">
           <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
   </center>
-  <div class="container-fluid mt-5">
-<table class="table">
-  <thead>
+<div class="appointment-table container-fluid mt-5">
+<table class="appointment-table table">
+  <thead class="appointment-table-header">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Patient Name</th>
@@ -22,7 +23,7 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="apointment-table-body">
     {% for i in search %}
     <tr>
       <td>{{i.id}}</td>
@@ -31,12 +32,13 @@
       <td>{{i.date}}</td>
       <td>{{i.time}}</td>
       <td>{{i.reason}}</td>
-      <td><a href="{% url 'admin_update_appointment' i.id %}"><button class="btn btn-primary">Update</button></a>
-      <a href="{% url 'admin_delete_appointment' i.id %}"><button class="btn btn-danger">Delete</button></a>
+      <td><a href="{% url 'admin_update_appointment' i.id %}"><button class="admin-appointment-update-btn btn btn-primary">Update</button></a>
+      <a href="{% url 'admin_delete_appointment' i.id %}"><button class="admin-appointment-delete-btn btn btn-danger">Delete</button></a>
       </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>
 </div>
 {% endblock content %}

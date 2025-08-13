@@ -2,26 +2,28 @@
 {% block content %}
 
 <div class="form-container">
-  <h2>Doctor Profile Update Form</h2>
+  <center>
+  <h2 class="doctor-profile-heading" style="color: green;font-size: 45px;"></h2><b>Doctor Profile Update Form</b></h2>
   </div>
   <div class="form-container">
   <form action="" method="POST">
     {% csrf_token %}
+    <label class="doctor-first-label form-label">First Name:</label>
+    <input class="doctor-name-input form-control"  type="text" name="f_name" value="{{ u.first_name }}">
 
-    <label class="form-label">Name:</label>
-    <input class="form-control"  type="text" name="f_name" value="{{ u.first_name }}">
-
-    <label class="form-label">Last Name:</label>
+    <label class="doctor-last-label form-label">Last Name:</label>
     <input class="form-control" type="text" name="l_name" value="{{ u.last_name }}">
 
-    <label class="form-label">Email:</label>
-    <input class="form-control" type="text" name="email" value="{{ u.email }}">    
+    <label class="doctor-email-label form-label">Email:</label>
+    <input class="doctor-name-input form-control" type="text" name="email" value="{{ u.email }}">    
 
-    <label class="form-label">User Name:</label>
-    <input class="form-control" type="text" name="username" value="{{u.username}}">
+    <label class="doctor-user-label form-label">User Name:</label>
+    <input class="doctor-name-input form-control" type="text" name="username" value="{{u.username}}">
 
-    <button type="submit" class="btn btn-fancy">Submit</button>
+    <button type="submit" class="doctor-submit-btn btn btn-fancy">Submit</button>
   </form>
+  </center>
 </div>
+
 
 {% endblock content %}

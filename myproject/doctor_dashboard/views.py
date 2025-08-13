@@ -2,9 +2,11 @@ from django.shortcuts import render,redirect
 from doctor_dashboard.models import Patient
 from admin_dashboard.models import Appointment
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 # Create your views here.
+@login_required(login_url='doctor_login')
 def doctor_home(request):
     patient_count = Patient.objects.filter(doctor=request.user).count()
     appointment_count = Appointment.objects.filter(doctor=request.user).count()
@@ -15,6 +17,7 @@ def doctor_home(request):
     }
     return render(request,'doctor_home.html',context)
 
+@login_required
 def doctor_view_patient(request):
     
     if request.method=='GET':
@@ -26,7 +29,7 @@ def doctor_view_patient(request):
             data=Patient.objects.filter(doctor=request.user)
     return render(request,'doctor_view_patient.html',{'patient':data})
 
-
+@login_required
 def doctor_view_appointment(request):
     if request.method=='GET':
         if 'q' in request.GET:
@@ -36,7 +39,7 @@ def doctor_view_appointment(request):
         else:
             data=Appointment.objects.filter()
     return render(request,'doctor_view_appointment.html',{'appointment':data})
-
+@login_required
 def doctor_patient_update(request,pk):
     u = Patient.objects.get(id=pk)
     doctors = User.objects.all()
@@ -58,7 +61,7 @@ def doctor_patient_update(request,pk):
 
         return redirect('doctor_view_patient')
     return render(request,'doctor_patient_update.html',{'u':u,'doctors':doctors})
-
+@login_required
 def doctor_appointment_update(request,pk):
     u = Appointment.objects.get(id=pk)
 
@@ -81,12 +84,12 @@ def doctor_appointment_update(request,pk):
     patients = Patient.objects.all()
     doctors = User.objects.all()
     return render(request,'doctor_appointment_update.html',{'u': u,'patients': patients,'doctors': doctors})
-    
+@login_required    
 def doctor_delete_appointment(request,pk):
     delete_data = Appointment.objects.get(id=pk)
     delete_data.delete()
     return redirect('doctor_view_appointment')
-
+@login_required
 def doctor_patient_delete(request,pk):
     delete_data = Patient.objects.get(id=pk)
     delete_data.delete()

@@ -2,13 +2,13 @@
 
 {% block content %}
 <center>
-    <h2>UPDATE APPOINTMENT FORM</h2>
+    <h2 class="update-appointment-header">UPDATE APPOINTMENT FORM</h2>
 <form action="" method="POST">
     {% csrf_token %}
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Patient Name:</label>
-    <label>Patient</label>
-        <select name="patient">
+    <label for="exampleInputEmail1" class="update-appointment-label form-label">Patient Name:</label>
+    <label class='update-appointment-label'>Patient</label>
+        <select class="update-appointment-choice" name="patient">
         {% for p in patients %}
             <option value="{{ p.id }}" 
             {% if p.id == u.patient.id %}selected{% endif %}>
@@ -18,8 +18,8 @@
         </select>
   </div>
   <div class="mb-3">
-    <label>Doctor</label>
-    <select name="doctor">
+    <label class="update-appointment-doc-label">Doctor</label>
+    <select class="update-appointment-doc-choice" name="doctor">
     {% for d in doctors %}
         <option value="{{ d.id }}" {% if d.id == u.doctor.id %}selected{% endif %}>
         {{ d.first_name }} {{ d.last_name }}
@@ -28,19 +28,19 @@
     </select>
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Date:</label>
+    <label for="exampleInputEmail1" class="update-appointment-date-label form-label">Date:</label>
     <input type="text" name="date"  class="form-control"  value="{{ u.date|date:'Y-m-d' }}">
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Time:</label>
+    <label for="exampleInputEmail1" class="update-appointment-time-label form-label">Time:</label>
     <input type="text" name="time"  class="form-control" value="{{ u.time|time:'H:i' }}">
   </div>
   <div class="mb-3">
     <label class="form-label">Reason:</label>
-    <input type="textarea" class="form-control" name="reason" value="{{u.reason}}">
+    <input type="textarea" class="update-appointment-reason form-control" name="reason" value="{{u.reason}}">
   </div>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="update-btn btn btn-primary">Submit</button>
 </form>
 </center>
 {% endblock content %}

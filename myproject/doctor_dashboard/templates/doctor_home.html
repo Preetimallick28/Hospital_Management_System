@@ -2,18 +2,19 @@
 
 {% block content %}
 <center>
-<h2>Welcome DR.{{request.user}}</h2></center>
-<div class="dashboard-container">
-  <div class="card">
-    <h2>{{ patient_count }}</h2>
-    <p>Patients</p>
-    <a class="btn btn-primary" href="{% url 'doctor_view_patient' %}">View Patient</a>
+<h2 class="doctor-heading">Welcome DR.{{request.user}}</h2>
+<div class="doctor-dashboard-container">
+  <div class="doctor-patient-card card">
+    <h2 class="patient-count">{{ patient_count }}</h2>
+    <p class="doctor-specific-patient">Patients</p>
+    <a class="patient-view-btn btn btn-primary" href="{% url 'doctor_view_patient' %}">View Patient</a>
   </div>
 
-  <div class="card">
-    <h2>{{ appointment_count }}</h2>
-    <p>Appointments</p>
-    <a class="btn btn-primary" href="{% url 'doctor_view_appointment' %}">View Appointment</a>
+  <div class="doctor-appointment-card card">
+    <h2 class="appointment-count">{{ appointment_count }}</h2>
+    <p class="doctor-specific-appointment">Appointments</p>
+    <a class="appointment-view-btn btn btn-primary" href="{% url 'doctor_view_appointment' %}">View Appointment</a>
   </div>
 </div>
+</center>
 {% endblock content %}
