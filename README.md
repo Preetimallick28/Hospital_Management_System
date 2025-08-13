@@ -1,37 +1,61 @@
-# Hospital_Management_System
+A Django + Python-based web application designed to streamline hospital operations by managing Patients, Doctors, and Appointments with role-based access control for Management Staff and Doctors.
 
-The project is based on djanggo framework and python technology
+👥 User Roles
+1. Management / Staff
+Responsibilities:
 
-In this project i have created two users that is one for staff or management team and one is doctor 
+➕ Add Patients (Doctor assigned via ForeignKey).
 
-responsibility of management team are:
+✏ CRUD Operations on Patients (Create, Read, Update, Delete).
 
-1. Add patient
-2. Crud operation on Patient like updating patient, view patient and delete patient
-3. While adding patient , we have made the doctor as a foreign key
-4. Add Appointment 
-5. while adding appointment , i have kept patient and doctors as a foreign key
-6. crud operation on appointment are , updating appointment , view appointment and deleting appointment
-7. In admin dashboard, management can see how many doctors are there , how many patient is added and how many appointments have booked
-8. for admin , profile of admin has been created in which we can update the profile , reset the password and logout button
-9. Next i have kept search bar where we can search patients and appoinments
-10. Next let see what are the features available in doctor dashboard
+📅 Add Appointments (Patient & Doctor as ForeignKeys).
 
-Responsibility of doctor are:
+✏ CRUD Operations on Appointments.
 
-1. in the doctor dashboard i have used the specified user credetial , so that doctors can see thier patients and appointment only , and not other patient and appointment registered by doctor
+📊 Admin Dashboard: View real-time counts of Doctors, Patients, and Appointments.
 
-2. then in doctor dashboard , there is option for view patient and in the view patient we can do update and delete
+👤 Profile Management: Update profile, reset password, and logout.
 
-3. other than update and delete , we can search patient also
+🔍 Search Functionality: Search patients and appointments instantly.
 
-4. same as patient , in appointment section we can view appointment list , update appointments and delete appointment as well as we can do search .
+2. Doctor
+Responsibilities:
 
-5. we have doctor profile section , in profile section , we can do update , reset password
+🔐 Access restricted to their own assigned Patients and Appointments only.
 
-Benefiting of separating two different User -
+📄 View Patients: With options to update, delete, and search.
 
-1. For every single user doctor , they can see thier specific patient and specific appointment , no confusion will be thier and one doctor cannot see patients or appointment of another doctor
+📅 View Appointments: With options to update, delete, and search.
 
-2. authentication and authorization have been included , before authorization user is not allowed to access 
+👤 Profile Management: Update profile and reset password.
 
+🔑 Key Features
+Role-based Authentication & Authorization (Django’s built-in auth system).
+
+Doctor-specific data visibility — One doctor cannot see another doctor’s patients or appointments.
+
+Search Functionality for quick record access.
+
+Responsive Dashboard for both Admin and Doctor roles.
+
+Secure Access Control — No unauthorized access before login.
+
+🖥️ Tech Stack
+Backend: Python, Django
+
+Frontend: HTML, CSS, Bootstrap, JavaScript
+
+Database: MySQL
+
+Authentication: Django’s built-in auth system with role differentiation
+
+
+
+📌 Benefits of Separating Roles
+🎯 Clarity: Each Doctor views only their patients & appointments — no data overlap.
+
+🔒 Security: Patient data is visible only to authorized personnel.
+
+⚡ Efficiency: Staff and doctors work independently without confusion.
+
+This system ensures smooth hospital operations, maintains data security, and improves efficiency in managing patients and appointments.
